@@ -1,0 +1,8 @@
+cffi==1.15.1
+geographiclib==2.0
+geopy==2.3.0
+h3==3.7.6
+numpy==1.24.1
+pycparser==2.21
+pytz==2022.7.1
+timezonefinder==6.1.9
