@@ -28,13 +28,18 @@ def getWeather():
     clock.config(text=current_time)
     name.config(text="CURRENT WEATHER")
     complete_url = f"{base_url}appid={api_key}&q={city}"
-    json_data = requests.get(complete_url).json()
-    condition = json_data['weather'][0]['main']
-    description = json_data['weather'][0]['description']
-    temp = int(json_data['main']['temp'] - 273.15)
-    pressure = json_data['main']['pressure']
-    humidity = json_data['main']['humidity']
-    wind = json_data['wind']['speed']
+    try:
+        json_data = requests.get(complete_url).json()
+        condition = json_data['weather'][0]['main']
+        description = json_data['weather'][0]['description']
+        temp = int(json_data['main']['temp'] - 273.15)
+        pressure = json_data['main']['pressure']
+        humidity = json_data['main']['humidity']
+        wind = json_data['wind']['speed']
+    except:
+        messagebox.showerror("Error", "Please enter a valid city name")
+        return
+    
 
     t.config(text=(temp, "°C"))
     c.config(text=(f"{condition} | FEELS LIKE {temp} °C"))
